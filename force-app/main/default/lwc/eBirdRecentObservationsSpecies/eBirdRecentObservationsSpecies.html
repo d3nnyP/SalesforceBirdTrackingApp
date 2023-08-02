@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title={birdTitle} icon-name="custom:custom4">
+        <!-- Show bird name and species code from the Bird record -->
+        <div class="slds-p-around_medium">
+            <p><strong>Bird Name:</strong> {birdName}</p>
+            <p><strong>Species Code:</strong> {speciesCode}</p>
+        </div>
+
+        <!-- Display recent bird observations when available -->
+        <template lwc:if={birdData}>
+            <div class="slds-p-around_medium">
+                <ul class="slds-list_dotted">
+                    <template for:each={birdData} for:item="observation">
+                        <li key={observation.id}>
+                            <p><strong>Location:</strong> {observation.locName}</p>
+                            <p><strong>Observation Date:</strong> {observation.obsDt}</p>
+                            <br />
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+
+        <!-- Show a message when no recent bird observations are available -->
+        <template lwc:else>
+            <div class="slds-p-around_medium">
+                <p>No recent bird observations found for the specified species.</p>
+            </div>
+        </template>
+
+        <!-- Center the fetch and clear buttons -->
+        <div class="slds-text-align_center slds-p-top_medium">
+            <!-- Call the handleButtonClick method when the "Get Recent Observations" button is clicked -->
+            <lightning-button variant="brand" label="Get Recent Observations" onclick={handleButtonClick} class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Call the handleClear method when the "Clear" button is clicked -->
+            <lightning-button variant="destructive" label="Clear" onclick={handleClear} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Recent Notable Bird Observations">
+        <template if:true={birdData}>
+            <!-- Display the bird observations if birdData is available -->
+            <div class="slds-m-around_medium">
+                <ul>
+                    <template for:each={birdData} for:item="observation">
+                        <li key={observation.id}>
+                            <p><strong>Bird Name:</strong> {observation.comName}</p>
+                            <p><strong>Location:</strong> {observation.locName}</p>
+                            <p><strong>Observation Date:</strong> {observation.obsDt}</p>
+                            <br/>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+        <template if:false={birdData}>
+            <!-- Display a message when no birdData is available -->
+            <div class="slds-m-around_medium">
+                <p>Click "Get Recent Notable Observations"</p>
+            </div>
+        </template>
+        <!-- Center the button using SLDS class -->
+        <div class="slds-align_absolute-center">
+            <lightning-button label="Get Recent Notable Observations" onclick={handleButtonClick} variant="brand" class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label="Clear Observations" onclick={handleClear} variant="destructive" class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

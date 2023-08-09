@@ -2,18 +2,17 @@
     <lightning-card title={birdTitle} icon-name="custom:custom4">
         <!-- Show bird name and species code from the Bird record -->
         <div class="slds-p-around_medium">
-            <p><strong>Bird Name:</strong> {birdName}</p>
-            <p><strong>Species Code:</strong> {speciesCode}</p>
+            <h4><strong>Bird Name:</strong> {birdName}</h4>
         </div>
 
         <!-- Display recent bird observations when available -->
         <template lwc:if={birdData}>
-            <div class="slds-p-around_medium">
+            <div class="slds-var-p-around_medium">
                 <ul class="slds-list_dotted">
                     <template for:each={birdData} for:item="observation">
                         <li key={observation.id}>
-                            <p><strong>Location:</strong> {observation.locName}</p>
-                            <p><strong>Observation Date:</strong> {observation.obsDt}</p>
+                            <p><lightning-icon icon-name="utility:checkin" alternative-text="Map" title="Map"></lightning-icon><strong>Location:</strong> {observation.locName}</p>
+                            <div class="slds-border_bottom" ><p><lightning-icon icon-name="utility:date_input" alternative-text="Calendar" title="Calendar"></lightning-icon><strong>Observation Date:</strong> {observation.obsDt}</p></div>
                             <br />
                         </li>
                     </template>

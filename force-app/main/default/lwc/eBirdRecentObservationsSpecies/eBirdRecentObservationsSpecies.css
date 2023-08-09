@@ -1,0 +1,7 @@
+li {
+    list-style-type: none;
+}
+
+p {
+    margin: var(--lwc-varSpacingXxxSmall, spacingXxxSmall);
+}

@@ -1,0 +1,7 @@
+img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}

@@ -1,4 +1,4 @@
-import { LightningElement, api, track, wire } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import saveAttachment from '@salesforce/apex/BirdController.saveAttachment';
 import getAttachment from '@salesforce/apex/BirdController.getAttachment';
@@ -6,10 +6,10 @@ import getBird from '@salesforce/apex/BirdController.getBird';
 
 export default class BirdImageUpload extends LightningElement {
     @api recordId;
-    @track imageUrl;
-    @track file;
-    @track uploadDisabled = true;
-    @track birdName;
+    imageUrl;
+    file;
+    uploadDisabled = true;
+    birdName;
 
     @wire(getBird, { birdId: '$recordId' })
     wiredBird({ error, data }) {

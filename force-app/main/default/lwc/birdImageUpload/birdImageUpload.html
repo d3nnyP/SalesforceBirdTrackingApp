@@ -5,7 +5,6 @@
                 <img src={imageUrl} alt="Bird Image" class="slds-align_absolute-center"/>
             </template>
             
-            <lightning-input type="file" label="Select Image" onchange={handleFileChange}></lightning-input>
-        </div>
+            <lightning-file-upload label="Select Image" accept={acceptedFormats} record-id={recordId} onuploadfinished={handleUpload}></lightning-file-upload>        </div>
     </lightning-card>
 </template>

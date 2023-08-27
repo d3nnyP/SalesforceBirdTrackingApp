@@ -2,7 +2,11 @@ public with sharing class BirdController {
   // called to return record Name field
   @AuraEnabled(cacheable=true)
   public static Bird__c getBird(Id birdId) {
-    return [SELECT Id, Name FROM Bird__c WHERE Id = :birdId];
+    return [
+      SELECT Id, Name, Macaulay_Library_Code__c
+      FROM Bird__c
+      WHERE Id = :birdId
+    ];
   }
   // gets any file that is related to the record and returns the Id so it can be displayed
   @AuraEnabled(cacheable=true)

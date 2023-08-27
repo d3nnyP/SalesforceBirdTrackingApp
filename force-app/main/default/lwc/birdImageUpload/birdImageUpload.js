@@ -19,6 +19,7 @@ export default class BirdImageUpload extends LightningElement {
   // get record name to display
   @wire(getBird, { birdId: '$recordId' })
   wiredBird({ error, data }) {
+    console.log('wiredBird2', data, error)
     if (data) {
       this.birdName = data.Name
       console.log(this.recordId)

@@ -1,10 +1,23 @@
 <template>
-    <lightning-card title={birdName}>
-        <div class="slds-m-around_medium"> 
-            <template if:true={imageUrl}>
-                <img src={imageUrl} alt="Bird Image" class="slds-align_absolute-center"/>
-            </template>
-            
-            <lightning-file-upload label="Select Image" accept={acceptedFormats} record-id={recordId} onuploadfinished={handleUpload}></lightning-file-upload>        </div>
-    </lightning-card>
+  <lightning-card title={birdName}>
+    <div class="slds-m-around_medium">
+      <template lwc:if={imageUrl}>
+        <img
+          src={imageUrl}
+          alt="Bird Image"
+          class="slds-align_absolute-center"
+        />
+      </template>
+      <template lwc:else>
+        <lightning-file-upload
+          label="Upload Image"
+          accept={acceptedFormats}
+          record-id={recordId}
+          onuploadfinished={handleUploadFinished}
+          class="slds-align_absolute-center"
+        >
+        </lightning-file-upload>
+      </template>
+    </div>
+  </lightning-card>
 </template>

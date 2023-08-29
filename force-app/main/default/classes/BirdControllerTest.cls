@@ -13,12 +13,11 @@ public class BirdControllerTest {
     System.assertEquals(testBird.Id, result.Id);
     System.assertEquals(testBird.Name, result.Name);
   }
-
   @isTest
   static void testGetAttachment() {
-    // Create a test parent record
-    Account testAccount = new Account(Name = 'Test Account');
-    insert testAccount;
+    // Create a test bird record
+    Bird__c testBird = new Bird__c(Name = 'Test Bird');
+    insert testBird;
 
     // Create a test attachment
     ContentVersion testAttachment = new ContentVersion(
@@ -28,16 +27,28 @@ public class BirdControllerTest {
     );
     insert testAttachment;
 
+    // Query for the ContentDocumentId of the ContentVersion record
+    testAttachment = [
+      SELECT ContentDocumentId
+      FROM ContentVersion
+      WHERE Id = :testAttachment.Id
+    ];
+
+    System.debug('ContentVersion record: ' + testAttachment);
+
     // Create a test content document link
     ContentDocumentLink testLink = new ContentDocumentLink(
-      LinkedEntityId = testAccount.Id,
+      LinkedEntityId = testBird.Id,
       ContentDocumentId = testAttachment.ContentDocumentId,
       ShareType = 'V'
     );
+
+    System.debug('ContentDocumentLink record: ' + testLink);
+
     insert testLink;
 
-    // Call the getAttachment() method with the test parent record ID
-    Id result = BirdController.getAttachment(testAccount.Id);
+    // Call the getAttachment() method with the test bird record ID
+    Id result = BirdController.getAttachment(testBird.Id);
 
     // Verify that the method returns the correct attachment ID
     System.assertEquals(testAttachment.Id, result);

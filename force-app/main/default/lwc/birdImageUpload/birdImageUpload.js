@@ -47,7 +47,7 @@ export default class BirdImageUpload extends LightningElement {
     console.log('uploadedFiles: ' + JSON.stringify(uploadedFiles))
     const successMessage = new ShowToastEvent({
       title: 'Success!',
-      message: 'Bird image uploaded successfully.',
+      message: 'Profile Picture Uploaded Successfully',
     })
     this.dispatchEvent(successMessage)
 

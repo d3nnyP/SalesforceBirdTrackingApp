@@ -1,0 +1,37 @@
+<template>
+  <lightning-card>
+    <div class="slds-text-align_center">
+      <h2 class="slds-p-bottom_medium slds-text-title_bold">Bird of the Day</h2>
+      <template lwc:if={birdName}>
+        <div class="slds-grid slds-wrap slds-grid_vertical">
+          <div class="slds-col slds-align_absolute-center">
+            <img
+              src={birdImage}
+              alt={birdName}
+              width="200"
+              class="slds-p-bottom_medium"
+            />
+          </div>
+          <div class="slds-col slds-grid_vertical slds-align_absolute-center">
+            <h2 class="slds-p-bottom_medium slds-text-title_bold">
+              {birdName}
+            </h2>
+            <lightning-button
+              label="Learn More"
+              onclick={navigateToRecordPage}
+            ></lightning-button>
+          </div>
+        </div>
+      </template>
+      <template lwc:elseif={error}>
+        <p>This is the error: {error}</p>
+      </template>
+      <template lwc:else>
+        <lightning-spinner
+          alternative-text="Loading"
+          size="large"
+        ></lightning-spinner>
+      </template>
+    </div>
+  </lightning-card>
+</template>

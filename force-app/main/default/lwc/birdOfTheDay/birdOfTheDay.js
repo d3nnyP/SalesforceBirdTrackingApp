@@ -24,6 +24,8 @@ export default class BirdOfTheDay extends NavigationMixin(LightningElement) {
     const today = new Date()
     const todayOptions = { month: 'short', day: '2-digit', year: 'numeric' }
     const formattedDate = today.toLocaleDateString('en-US', todayOptions)
+    console.log('storedDate: ', storedDate)
+    console.log('formattedDate: ', formattedDate)
     if (storedDate && storedDate === formattedDate) {
       this.date = storedDate
       this.birdName = storedBirdName

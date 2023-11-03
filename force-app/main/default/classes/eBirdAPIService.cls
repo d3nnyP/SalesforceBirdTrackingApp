@@ -4,7 +4,7 @@ public class eBirdAPIService {
     Http http = new Http();
     HttpRequest request = new HttpRequest();
     request.setEndpoint(
-      'callout:eBirdAPI' +
+      'callout:eBirdAPINamedCred' +
         '/' +
         regionCode +
         '/recent/notable?detail=simple&maxResults=5&back=1'

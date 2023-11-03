@@ -10,10 +10,7 @@ public class eBirdAPIService {
         '/recent/notable?detail=simple&maxResults=5&back=1'
     );
     request.setMethod('GET');
-    request.setHeader(
-      'X-eBirdApiToken',
-      '{!$Credential.eBirdAPI.ebirdapitoken}'
-    );
+
     try {
       HttpResponse response = http.send(request);
       if (response.getStatusCode() == 200) {

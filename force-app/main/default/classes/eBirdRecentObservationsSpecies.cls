@@ -11,10 +11,6 @@ public with sharing class eBirdRecentObservationsSpecies {
           '?maxResults=5&back=30&includeProvisional=true'
       );
       request.setMethod('GET');
-      request.setHeader(
-        'X-eBirdApiToken',
-        '{!$Credential.eBirdAPI.ebirdapitoken}'
-      );
 
       HttpResponse response = http.send(request);
       if (response.getStatusCode() == 200) {

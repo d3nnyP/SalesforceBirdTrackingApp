@@ -5,8 +5,7 @@ public with sharing class eBirdRecentObservationsSpecies {
       Http http = new Http();
       HttpRequest request = new HttpRequest();
       request.setEndpoint(
-        'callout:eBirdAPINamedCred' +
-          '/US/recent/' +
+        'callout:eBirdAPINamedCred/US/recent/' +
           speciesCode +
           '?maxResults=5&back=30&includeProvisional=true'
       );
